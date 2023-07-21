@@ -2,11 +2,11 @@
 
 This is a simple chess game implemented in Python using the pygame library.
 
-![EXAMPLE](info/images/example.png)
+![EXAMPLE](info/game_example.png)
 
 ## ⚙️ INSTALLATION
 
-- [ Python 3.x ] [ Pygame library ]
+-  `[ Pygame ]` `[ Python 3.X ]`
 
 1. **Clone the repository**:
 
@@ -33,29 +33,32 @@ pip install -r requirements.txt
 
 2. The game window will open, displaying the chessboard.
 
-3. Players can take turns selecting and moving their pieces using the mouse. Valid moves will be highlighted on the board.
+3. Players can take turns selecting and moving their pieces using the mouse.
 
-4. The game follows standard chess rules, including en passant, castling, and pawn promotion.
+4. The game follows standard chess rules.
 
-5. The game will continue until one player is checkmated or a draw is reached. The result will be displayed on the screen.
+5. The game will continue until one player is checkmated or a draw is reached.
 
 ## 🗂️ UML
 
-![UML](info/images/uml.jpeg)
+![UML](info/uml_image.jpeg)
 
 ## 🔍 ROADMAP
 
-- Create a data structure to represent the chessboard
-- Define classes to represent different chess pieces
+- Data structure to represent the chessboard
+- Classes for different chess pieces
 - Implement logic to generate all possible legal moves for each piece
 
   
-- Create game engine for changes on board
-- Develop a graphical user interface (GUI) to display the chessboard and allow players to make moves using mouse clicks
+- Create game engine for board changes
+- Develop a graphical user interface to display the chessboard (GUI)
+- Allow players to make moves using mouse clicks (GUI)
 
-  
+
+- Implement logic to check for checks and checkmates 
 - Validate pieces moves if is checkmate (remove from legal moves)
-- Implement logic to check for checks and checkmates
+
+
 - Build en passant and promotion for pawns
 - Build castling for kings and rooks
 
