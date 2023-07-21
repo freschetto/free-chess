@@ -45,24 +45,25 @@ pip install -r requirements.txt
 
 ## 🔍 ROADMAP
 
+**STEP 01**
 - Data structure to represent the chessboard
 - Classes for different chess pieces
 - Implement logic to generate all possible legal moves for each piece
 
-  
+**STEP 02**
 - Create game engine for board changes
 - Develop a graphical user interface to display the chessboard (GUI)
 - Allow players to make moves using mouse clicks (GUI)
 
-
+**STEP 03**
 - Implement logic to check for checks and checkmates 
 - Validate pieces moves if is checkmate (remove from legal moves)
 
-
+**STEP 04**
 - Build en passant and promotion for pawns
 - Build castling for kings and rooks
 
-  
+**STEP 05**
 - Implement a winning condition (capturing the opponent's king or a draw)
 - Create a game loop that handles player moves and updates the board accordingly until the game ends
 
