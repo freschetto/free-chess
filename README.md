@@ -27,7 +27,7 @@ python3 -m venv env_name
 pip install -r requirements.txt
 ```
 
-## 🎮 Usage
+## 🎮 USAGE
 
 1. Run the main.py file to start the game: `python main.py`
 
@@ -67,6 +67,6 @@ pip install -r requirements.txt
 - Implement a winning condition (capturing the opponent's king or a draw)
 - Create a game loop that handles player moves and updates the board accordingly until the game ends
 
-## 📄 License
+## 📄 LICENSE
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the `LICENSE` file for more details.
