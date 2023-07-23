@@ -21,7 +21,7 @@ class Board:
     # ----------------------------------------------------------------------------------------------------------------
 
     @staticmethod
-    def empty_board(size): return [['  ' for _ in range(size)] for _ in range(size)]
+    def empty_board(size) -> list: return [['  ' for _ in range(size)] for _ in range(size)]
 
     '''
             Board indexes reference:
@@ -37,7 +37,7 @@ class Board:
     '''
 
     @staticmethod
-    def create_pieces():
+    def create_pieces() -> list:
 
         pieces = []  # create piece for each type (subclass) and team (white,black) --> (type) list[obj]
 
@@ -71,7 +71,7 @@ class Board:
 
     # ----------------------------------------------------------------------------------------------------------------
 
-    def create_board(self):
+    def create_board(self) -> list:
 
         # create empty board
         visual = self.empty_board(8)
@@ -82,4 +82,28 @@ class Board:
 
         return visual
 
-    # ----------------------------------------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------------------------------------------
+
+    def is_empty(self, pos) -> bool:
+        return self.visual[pos[1]][pos[0]] == '  '
+
+    def is_enemy(self, name, pos) -> bool:
+        return self.visual[pos[1]][pos[0]][0] != name[0] and not self.is_empty(pos)
+
+    # ------------------------------------------------------------------------------------------------------------------
+
+    def update(self, piece, pos):
+
+        # clear old piece position on board
+        self.visual[piece.pos[1]][piece.pos[0]] = '  '
+
+        # add piece on board
+        self.visual[pos[1]][pos[0]] = piece.name
+
+        # update pieces valid moves
+        for pic in self.pieces:
+            if pic.pos in pic.moves or pos in piece.moves:
+                pic.update(pic.pos, self)
+
+        # update piece position and moves
+        piece.update(pos, self)
