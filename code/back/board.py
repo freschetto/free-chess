@@ -98,7 +98,7 @@ class Board:
 
     # ------------------------------------------------------------------------------------------------------------------
 
-    def pick_piece(self, pos) -> object:
+    def pick_piece(self, pos):
         return next((piece for piece in self.pieces if piece.pos == pos), None)
 
     def remove_piece(self, pos):
