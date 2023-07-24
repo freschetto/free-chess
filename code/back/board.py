@@ -17,6 +17,8 @@ class Board:
         self.pieces = self.create_pieces()
         # create matrix for visualize board
         self.visual = self.create_board()
+        # create initial pieces moves
+        self.create_pieces_moves()
 
     # ----------------------------------------------------------------------------------------------------------------
 
@@ -82,6 +84,10 @@ class Board:
 
         return visual
 
+    def create_pieces_moves(self):
+        for piece in self.pieces:
+            piece.update(piece.pos, self)
+
     # ------------------------------------------------------------------------------------------------------------------
 
     def is_empty(self, pos) -> bool:
@@ -92,18 +98,28 @@ class Board:
 
     # ------------------------------------------------------------------------------------------------------------------
 
+    def pick_piece(self, pos) -> object:
+        return next((piece for piece in self.pieces if piece.pos == pos), None)
+
+    def remove_piece(self, pos):
+        self.pieces.remove(self.pick_piece(pos))
+
+    # ------------------------------------------------------------------------------------------------------------------
+
     def update(self, piece, pos):
+
+        one, two = piece.pos, pos
 
         # clear old piece position on board
         self.visual[piece.pos[1]][piece.pos[0]] = '  '
 
+        # update piece position and moves
+        piece.update(pos, self)
+
         # add piece on board
-        self.visual[pos[1]][pos[0]] = piece.name
+        self.visual[piece.pos[1]][piece.pos[0]] = piece.name
 
         # update pieces valid moves
         for pic in self.pieces:
-            if pic.pos in pic.moves or pos in piece.moves:
+            if one in pic.moves or two in pic.moves:
                 pic.update(pic.pos, self)
-
-        # update piece position and moves
-        piece.update(pos, self)
