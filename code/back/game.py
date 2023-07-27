@@ -2,7 +2,7 @@
     This is our class for game engine function
 """
 
-from board import Board
+from code.back.board import Board
 
 
 class Game:
