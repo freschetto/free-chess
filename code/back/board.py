@@ -106,6 +106,30 @@ class Board:
 
     # ------------------------------------------------------------------------------------------------------------------
 
+    def get_king_pos(self, player):
+        for row in range(8):
+            for col in range(8):
+                if self.visual[col][row] == player + 'K':
+                    king_position = (row, col)
+                    return king_position
+
+    def is_check(self, player):
+
+        # Find the current player's king position
+        king_position = self.get_king_pos(player)
+
+        # Check for opponent's pieces attacking the king
+        opponent = 'w' if player == 'b' else 'b'
+
+        for piece in self.pieces:
+            if piece.name[0] == opponent:
+                if king_position in piece.moves:
+                    return True
+
+        return False
+
+    # ------------------------------------------------------------------------------------------------------------------
+
     def update(self, piece, pos):
 
         one, two = piece.pos, pos

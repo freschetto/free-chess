@@ -48,6 +48,7 @@ class Game:
 
     def pick_piece(self, pos):
         piece = self.board.pick_piece(pos)
+        piece.check(self.board)
         return piece if piece is not None and piece.name[0] == self.player else None
 
     def attack_enemy(self, piece, pos):
