@@ -47,17 +47,18 @@ class Game:
         return pos in self.selected_piece.moves
 
     def pick_piece(self, pos):
-        return self.board.pick_piece(pos) if self.board.pick_piece(pos).name[0] == self.player else None
+        piece = self.board.pick_piece(pos)
+        return piece if piece is not None and piece.name[0] == self.player else None
 
     def attack_enemy(self, piece, pos):
         self.board.remove_piece(pos)
-        piece.update(pos, self.board)
         self.board.update(piece, pos)
+        piece.pos = pos
         self.change_state()
 
     def move_piece(self, piece, pos):
-        piece.update(pos, self.board)
         self.board.update(piece, pos)
+        piece.pos = pos
         self.change_state()
 
     # ------------------------------------------------------------------------------------------------------------------

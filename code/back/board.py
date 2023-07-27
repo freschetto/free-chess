@@ -86,7 +86,7 @@ class Board:
 
     def create_pieces_moves(self):
         for piece in self.pieces:
-            piece.update(piece.pos, self)
+            piece.update(self)
 
     # ------------------------------------------------------------------------------------------------------------------
 
@@ -117,5 +117,5 @@ class Board:
         self.visual[two[1]][two[0]] = piece.name
 
         # update pieces valid moves
-        [pic.update(pic.pos, self) for pic in self.pieces]
+        [pic.update(self) for pic in self.pieces]
 
