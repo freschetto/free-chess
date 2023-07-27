@@ -51,10 +51,12 @@ class Game:
 
     def attack_enemy(self, piece, pos):
         self.board.remove_piece(pos)
+        piece.update(pos, self.board)
         self.board.update(piece, pos)
         self.change_state()
 
     def move_piece(self, piece, pos):
+        piece.update(pos, self.board)
         self.board.update(piece, pos)
         self.change_state()
 

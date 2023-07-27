@@ -111,15 +111,11 @@ class Board:
         one, two = piece.pos, pos
 
         # clear old piece position on board
-        self.visual[piece.pos[1]][piece.pos[0]] = '  '
-
-        # update piece position and moves
-        piece.update(pos, self)
+        self.visual[one[1]][one[0]] = '  '
 
         # add piece on board
-        self.visual[piece.pos[1]][piece.pos[0]] = piece.name
+        self.visual[two[1]][two[0]] = piece.name
 
         # update pieces valid moves
-        for pic in self.pieces:
-            if one in pic.moves or two in pic.moves:
-                pic.update(pic.pos, self)
+        [pic.update(pic.pos, self) for pic in self.pieces]
+
