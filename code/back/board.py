@@ -116,6 +116,9 @@ class Board:
         # add piece on board
         self.visual[two[1]][two[0]] = piece.name
 
+        # change piece position
+        piece.pos = pos
+
         # update pieces valid moves
         [pic.update(self) for pic in self.pieces]
 
