@@ -2,7 +2,7 @@
     This is our class for game engine function
 """
 
-import code.back.board as b
+from board import Board
 
 
 class Game:
@@ -11,7 +11,7 @@ class Game:
         # create bool and check if user has picked a piece
         self.selected_piece = None
         # create board to manage game
-        self.board = b.Board()
+        self.board = Board()
         # create string for current team player
         self.player = 'w'
 
@@ -47,7 +47,8 @@ class Game:
         return pos in self.selected_piece.moves
 
     def pick_piece(self, pos):
-        return self.board.pick_piece(pos) if self.board.pick_piece(pos).name[0] == self.player else None
+        piece = self.board.pick_piece(pos)
+        return piece if piece is not None and piece.name[0] == self.player else None
 
     def attack_enemy(self, piece, pos):
         self.board.remove_piece(pos)

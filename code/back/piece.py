@@ -19,8 +19,7 @@ class Piece:
 
     # ----------------------------------------------------------------------------------------------------------------
 
-    def update(self, pos, board):
-        # change piece position
-        self.pos = pos
+    def update(self, board):
+
         # calculate all valid moves with new position
         self.moves = self.valid_moves(board)
