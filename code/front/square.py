@@ -9,7 +9,7 @@ class Square:
 
     def __init__(self, x, y):
         self.pos = (x, y)  # where is the square
-        self.proprieties = {"selected": False, "hover": False, "checkmate": False}
+        self.proprieties = {"selected": False, "hover": False, "check": False}
         self.color = self.standard_color(None, x, y)
 
     def standard_color(self, action, row, col):  # this func() return color of square
