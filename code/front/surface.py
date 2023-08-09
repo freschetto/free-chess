@@ -43,6 +43,14 @@ class Surface:
 
         self.draw()
 
+        x, y = self.game.board.get_king_pos(self.game.player)
+        king_square = self.board.get_square(y, x)
+
+        if self.game.board.is_check(self.game.player):
+            king_square.change_color("check")
+        else:
+            king_square.standard_color("check", king_square.pos[0], king_square.pos[1])
+
         for event in pygame.event.get():
 
             x, y = pygame.mouse.get_pos()

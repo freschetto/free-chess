@@ -23,7 +23,10 @@ class Board(pygame.sprite.Sprite):
     # ------------------------------------------------------------------------------------------------------------------
 
     def pick_mouse_square(self, pos):  # pick what square of the board we are with mouse
-        return self.board[int((pos[1] - BOARD_Y) / SQUARE_SIZE)][int((pos[0] - BOARD_X) / SQUARE_SIZE)]
+        return self.get_square(int((pos[1] - BOARD_Y) / SQUARE_SIZE), int((pos[0] - BOARD_X) / SQUARE_SIZE))
+
+    def get_square(self, y, x):
+        return self.board[y][x]
 
     def selected_square(self, square):  # change color and remove old square selected
         square.change_color("selected")
@@ -51,8 +54,8 @@ class Board(pygame.sprite.Sprite):
             screen.blit(piece_image, pos)  # load piece image in current self position
 
     @staticmethod
-    def show_possible_moves(screen, board, piece):
-        for move in piece.valid_moves(board):
+    def show_possible_moves(screen, piece):
+        for move in piece.moves:
             pos = ((move[0] * SQUARE_SIZE + BOARD_X) + SQUARE_SIZE / 2, (move[1] * SQUARE_SIZE + BOARD_Y) + SQUARE_SIZE / 2)
             pygame.draw.circle(screen, (0, 200, 0), pos, 10)
 
@@ -64,4 +67,4 @@ class Board(pygame.sprite.Sprite):
 
         self.draw_pieces(self.pieces_images, screen, board.pieces)
 
-        self.show_possible_moves(screen, board, piece) if piece is not None else None
+        self.show_possible_moves(screen, piece) if piece is not None else None
