@@ -4,12 +4,14 @@ import pygame
 
 from code.back.game import Game
 from code.front.board import Board
+from code.front.interface import Interface
 from code.front.constant import DISPLAY_WIDTH, DISPLAY_HEIGHT, BOARD_X, BOARD_Y, BOARD_SIZE
 
 
 class Surface:
 
     def __init__(self):
+        self.interface = Interface()
         self.game = Game()  # BACKEND
         self.screen = self.set_display()
         self.board = Board(self.game.board.pieces)  # GRAPHIC BOARD
@@ -34,6 +36,8 @@ class Surface:
     # ------------------------------------------------------------------------------------------------------------------
 
     def draw(self):  # DRAW ALL THINGS
+
+        self.interface.draw(self.screen)
 
         self.board.draw(self.screen, self.game.board, self.game.selected_piece)
 
