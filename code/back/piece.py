@@ -21,16 +21,20 @@ class Piece:
     # ----------------------------------------------------------------------------------------------------------------
 
     def check(self, board):
-        pos = self.pos
+
+        start_pos = self.pos
+        two = copy.deepcopy(board)
         invalid_moves = []
+
         for move in self.moves:
-            two = copy.deepcopy(board)
             if two.is_enemy(self.name, move):
                 two.remove_piece(move)
             two.update(self, move)
             if two.is_check(self.name[0]):
                 invalid_moves.append(move)
-            self.pos = pos
+
+        self.pos = start_pos
+
         for invalid in invalid_moves:
             self.moves.remove(invalid)
 

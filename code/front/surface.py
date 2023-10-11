@@ -48,8 +48,6 @@ class Surface:
 
         if self.game.board.is_check(self.game.player):
             king_square.change_color("check")
-        else:
-            king_square.standard_color("check", king_square.pos[0], king_square.pos[1])
 
         for event in pygame.event.get():
 
