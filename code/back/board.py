@@ -110,8 +110,7 @@ class Board:
         for row in range(8):
             for col in range(8):
                 if self.visual[col][row] == player + 'K':
-                    king_position = (row, col)
-                    return king_position
+                    return row, col
 
     def is_check(self, player):
 
